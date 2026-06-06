@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package employee;
+
+// 1. ÉP MAVEN ĐẺ CODE VÀO ĐÚNG CÂY FOLDER CỦA BẠN
+option java_package = "com.example.employee.grpc";
+option java_multiple_files = true;
+
+service EmployeeService {
+  rpc GetEmployeeBasicInfo (EmployeeRequest) returns (EmployeeResponse);
+  rpc GetAttendanceHistory (EmployeeRequest) returns (stream AttendanceResponse);
+}
+
+message EmployeeRequest {
+  int64 employee_id = 1;
+}
+message AttendanceResponse {
+  string date = 1;
+  string check_in = 2;
+  string check_out = 3;
+}
+// 2. BỔ SUNG ĐẦY ĐỦ CÁC TRƯỜNG ĐỂ DÙNG TRONG JAVA
+message EmployeeResponse {
+  int64 id = 1;
+  string employee_code = 2; // Bắt buộc phải viết là employee_code
+  string first_name = 3;    // Bắt buộc phải viết là first_name
+  string last_name = 4;     // Bắt buộc phải viết là last_name
+  string email = 5;
+  string position = 6;
+  string status = 7;
+  int64 department_id = 8;  // Bắt buộc phải viết là department_id
+}

@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "8c59f0f9-a035-4cb3-9118-8f81e3a5a74e",
+		"name": "Employee Microservice",
+		"description": "Postman Collection for testing Employee Microservice APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Authentication",
+			"item": [
+				{
+					"name": "Login - Get Mock Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Client APIs (Secure)",
+			"item": [
+				{
+					"name": "GET All Employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Employee By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/employees/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"employeeCode\": \"EMP006\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Wick\",\n  \"email\": \"john.wick@example.com\",\n  \"phone\": \"0987654321\",\n  \"gender\": \"MALE\",\n  \"dateOfBirth\": \"1990-09-02\",\n  \"hireDate\": \"2026-05-26\",\n  \"departmentId\": 1,\n  \"position\": \"Contractor\",\n  \"status\": \"ACTIVE\",\n  \"addresses\": [\n    {\n      \"street\": \"Continental Hotel, 12th Street\",\n      \"city\": \"New York\",\n      \"country\": \"USA\",\n      \"postalCode\": \"10005\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Employee",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Johnathan\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe.new@example.com\",\n  \"phone\": \"123456789\",\n  \"gender\": \"MALE\",\n  \"dateOfBirth\": \"1995-05-10\",\n  \"hireDate\": \"2024-01-15\",\n  \"departmentId\": 2,\n  \"position\": \"Senior Backend Developer\",\n  \"status\": \"ACTIVE\",\n  \"addresses\": [\n    {\n      \"street\": \"789 New St\",\n      \"city\": \"New York\",\n      \"country\": \"USA\",\n      \"postalCode\": \"10003\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/employees/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Employee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/employees/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Internal APIs",
+			"item": [
+				{
+					"name": "Validate Employee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/internal/employees/1/validate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"internal",
+								"employees",
+								"1",
+								"validate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employees Summary",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  1,\n  2,\n  3\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/internal/employees/summary",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"internal",
+								"employees",
+								"summary"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
