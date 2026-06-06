@@ -22,7 +22,7 @@ public class SecurityConfig {
     String signerKey;
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity security){
+    public SecurityFilterChain filterChain(HttpSecurity security) throws Exception{
             security.authorizeHttpRequests(auth->auth.anyRequest().authenticated());
             security.oauth2ResourceServer(oath2-> oath2.jwt(jwt-> jwt.decoder(jwtDecoder())));
         security.csrf(AbstractHttpConfigurer::disable);
