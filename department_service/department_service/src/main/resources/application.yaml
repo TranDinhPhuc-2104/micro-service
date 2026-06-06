@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: department_service
+
+  datasource:
+    url: "jdbc:mysql://localhost:3306/department_service"
+    username: root
+    password: NewPassword
+    jpa:
+      hibernate:
+        naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+server:
+  port: 8082
+
+
+jwt:
+  signerKey: "YourSuperSecretKeyThatIsAtLeast32CharactersLongForJWTValidation="
